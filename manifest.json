@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+
+    "name": "Issue checker",
+    "description": "This extension will analyze an issue before opening it on github",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": ["https://github.com/*/*/issues/new"],
+            "js": ["/extension/content.js"]
+        }
+    ],
+    "browser_action": {
+        "default_icon": "/extension/icon.png",
+        "default_popup": "/extension/popup.html"
+    },
+    "permissions": []
+}
