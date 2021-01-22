@@ -1,13 +1,17 @@
 {
     "manifest_version": 2,
-
     "name": "Issue checker",
     "description": "This extension will analyze an issue before opening it on github",
     "version": "1.0",
+    "background": { "scripts": ["/extension/hot-reload.js"] },
     "content_scripts": [
         {
             "matches": ["https://github.com/*/*/issues/new"],
             "js": ["/extension/content.js"]
+        },
+        {
+            "matches": ["https://github.com/*/*/projects/*"],
+            "js": ["/extension/project.js"]
         }
     ],
     "browser_action": {
