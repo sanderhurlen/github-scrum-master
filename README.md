@@ -1,6 +1,10 @@
 # Github SCRUM master
 Become a SCRUM master with GitHub with these handy extensions
 
+## Current features
+- Sums up all story points for a current sprint, and insert the number next to the board count (in Project view)
+- Display reminder and automatically opens the "select projects dropdown" for forcing you to add project.
+
 ## How to install
 
 1. Clone repo to your computer
