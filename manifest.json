@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Issue checker",
-    "description": "This extension will analyze an issue before opening it on github",
+    "name": "SCRUM master on GitHub",
+    "description": "Become a SCRUM master on GitHub with this extension",
     "version": "1.0",
     "background": { "scripts": ["/extension/hot-reload.js"] },
     "content_scripts": [
