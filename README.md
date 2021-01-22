@@ -1,5 +1,5 @@
 # Github SCRUM master
-Become a SCRUM master with GitHub with these handy extensions
+Google Chrome ext to become a SCRUM master on GitHub with these handy features
 
 ## Current features
 - Sums up all story points for a current sprint, and insert the number next to the board count (in Project view)
