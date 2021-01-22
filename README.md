@@ -1,5 +1,5 @@
-# issue-checker-chrome-ext
-An ultrasimple chrome extension to alert about project not being set when opening a new issue
+# Github SCRUM master
+Become a SCRUM master with GitHub with these handy extensions
 
 ## How to install
 
