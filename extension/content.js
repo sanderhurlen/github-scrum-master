@@ -1,7 +1,7 @@
 /**
  * Function resolver for project sidebebar element
  */
-const project = () => document.querySelectorAll('.discussion-sidebar-item')[2]
+const project = () => document.getElementById('projects-select-menu').parentElement.parentElement
 
 /**
  * Add reminder text over gutter, aka top of the page
