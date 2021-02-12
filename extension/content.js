@@ -1,7 +1,7 @@
 /**
- * Function resolver for project sidebebar element
+ * Function resolver for project sidebar element
  */
-const project = () => document.querySelectorAll('.discussion-sidebar-item')[2]
+const project = () => document.getElementById('projects-select-menu').parentElement.parentElement
 
 /**
  * Add reminder text over gutter, aka top of the page
@@ -20,7 +20,7 @@ const button = gutter.querySelector('.btn-primary')
 
 /**
  * Time interval for checking if a project is selected.
- * Disables the submit button if no priject is selected even
+ * Disables the submit button if no project is selected even
  * if form is valid.
  */
 let hasSelectedProject = false
