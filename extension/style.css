@@ -1,0 +1,24 @@
+#board-details {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: row;
+}
+.ghm-assignee-card {
+  color: #000;
+  min-width: 140px;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0 1rem 0 0;
+  box-shadow: #00000015 0px 5px 10px;
+}
+.ghm-assignee-card-title {
+  border-bottom: 1px solid #344;
+}
+.ghm-assignee-point-list {
+  margin: 0.8rem 0 0 0;
+  list-style-type: none;
+}
+.ghm-is-bold {
+  font-weight: bold;
+}
