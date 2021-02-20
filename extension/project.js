@@ -13,7 +13,7 @@ function sleep(ms) {
  *
  */
 async function doStoryPointWork() {
-  // We sleep 1 second to ensure cards are loaded and available
+  // We sleep 2 second to ensure cards are loaded and available
   await sleep(2000)
   const darkMode = document.documentElement.dataset['colorMode'] == 'dark' ? true : false
 
