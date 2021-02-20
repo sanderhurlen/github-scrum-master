@@ -15,6 +15,8 @@ function sleep(ms) {
 async function doStoryPointWork() {
   // We sleep 1 second to ensure cards are loaded and available
   await sleep(2000)
+  const darkMode = document.documentElement.dataset['colorMode'] == 'dark' ? true : false
+
   // The ID of the column, found when inspecting the HTML element
   const sprintBacklogId = 12330564
   const sprintInProgressId = 12330525
@@ -52,7 +54,7 @@ async function doStoryPointWork() {
 
         const assigneeCard = document.createElement('div')
         assigneeCard.classList.add('ghm-assignee-card')
-
+        if (darkMode) assigneeCard.classList.add('dark')
         const assigneeTitle = document.createElement('div')
         assigneeTitle.classList.add('ghm-assignee-card-title')
         assigneeTitle.append(assignee['avatar'])
