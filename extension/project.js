@@ -154,7 +154,7 @@ async function doStoryPointWork() {
       }
       for (const avatar of avatars) {
         const assignee = avatar.querySelector('img').alt
-        createAssigneeIfNotExists(assignee, avatar)
+        createAssigneeIfNotExists(assignee, avatar.cloneNode(true))
         assignees[assignee]['points'][column] += pointsInCard
       }
     }
