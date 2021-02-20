@@ -13,6 +13,8 @@ function sleep(ms) {
  *
  */
 async function doStoryPointWork() {
+  // We sleep 1 second to ensure cards are loaded and available
+  await sleep(2000)
   // The ID of the column, found when inspecting the HTML element
   const sprintBacklogId = 12330564
   const sprintInProgressId = 12330525
@@ -101,17 +103,14 @@ async function doStoryPointWork() {
     }
   }
 
-  // We sleep 1 second to ensure cards are loaded and available
-  await sleep(2000)
   /**
    * Add dragend listeners on all columns
    */
   document.querySelectorAll('.project-column').forEach((el) => {
     el.addEventListener('dragend', async () => {
       await setStoryPoints()
-      console.log('updating')
       clearAssigneePoints()
-      await setAllAssigneePoints()
+      setAllAssigneePoints()
       updateAssigneePoints()
     })
   })
@@ -160,7 +159,6 @@ async function doStoryPointWork() {
     }
   }
   async function setAllAssigneePoints() {
-    await sleep(500)
     const backlogCards = backlogColumn.querySelectorAll('article')
     const progressCards = sprintInProgressColumn.querySelectorAll('article')
     const reviewCards = sprintReadyForReviewColumn.querySelectorAll('article')
@@ -209,7 +207,7 @@ async function doStoryPointWork() {
   }
   createBoardDetailsMarkup()
   await setStoryPoints()
-  await setAllAssigneePoints()
+  setAllAssigneePoints()
   addAssignessToDetails()
 }
 
