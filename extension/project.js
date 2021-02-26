@@ -22,20 +22,44 @@ async function doStoryPointWork() {
   const sprintInProgressId = 12330525
   const sprintReadyForReviewId = 12426330
 
+  const projectHeader = document.querySelector('.project-header-controls')
   const columnsContainer = document.querySelector('.project-columns')
   const backlogColumn = document.getElementById(`column-${sprintBacklogId}`)
   const sprintInProgressColumn = document.getElementById(`column-${sprintInProgressId}`)
   const sprintReadyForReviewColumn = document.getElementById(`column-${sprintReadyForReviewId}`)
-
+  
   // All assignees in backlog, inprogress and ready for review
   let assignees = {}
-
+  
+  let labelForToggle
+  let toggleForDetailsElement
   let boardDetailsElement
   function createBoardDetailsMarkup() {
     boardDetailsElement = document.createElement('div')
+    toggleForDetailsElement = document.createElement('input')
+    labelForToggle = document.createElement('label')
+    
+    // add toggle for markup
+    toggleForDetailsElement.type = 'checkbox'
+    toggleForDetailsElement.id = 'toggle-board-details'
+    // with label
+    labelForToggle.id = 'label-toggle-details'
+    labelForToggle.innerHTML = 'Hide details'
+    labelForToggle.htmlFor = 'toggle-board-details'
+    
     boardDetailsElement.id = 'board-details'
+    
     columnsContainer.prepend(boardDetailsElement)
+    projectHeader.prepend(toggleForDetailsElement)
+    projectHeader.prepend(labelForToggle)
+
+    toggleForDetailsElement.addEventListener('click', () => {
+        boardDetailsElement.classList.toggle('hide')
+    })
   }
+
+  
+  
   function updateAssigneePoints() {
     for (const username in assignees) {
       if (Object.hasOwnProperty.call(assignees, username)) {
@@ -53,12 +77,14 @@ async function doStoryPointWork() {
         const assignee = assignees[username]
 
         const assigneeCard = document.createElement('div')
+        const assigneeName = document.createElement('p')
         assigneeCard.classList.add('ghm-assignee-card')
         if (darkMode) assigneeCard.classList.add('dark')
         const assigneeTitle = document.createElement('div')
         assigneeTitle.classList.add('ghm-assignee-card-title')
+        assigneeName.innerHTML = username
         assigneeTitle.append(assignee['avatar'])
-        assigneeTitle.innerHTML += `<br> ${username}`
+        assigneeTitle.append(assigneeName)
 
         const assigneeList = document.createElement('ul')
         assigneeList.classList.add('ghm-assignee-point-list')
@@ -188,6 +214,8 @@ async function doStoryPointWork() {
 
   const detailsContainer = backlogColumn.querySelector('.js-details-container')
   const counterElement = detailsContainer.querySelector('.js-column-card-count')
+  
+
   /**
    * Register click handler on the counter label so we can manuals
    * recalculate story points.
@@ -207,10 +235,18 @@ async function doStoryPointWork() {
     let count = counter
     counterElement.innerHTML = `${count} / ${getStoryPointsFromElement(backlogColumn)}p`
   }
+  
+
+  
   createBoardDetailsMarkup()
   await setStoryPoints()
   setAllAssigneePoints()
   addAssigneesToDetails()
+  
 }
 
+
+
 doStoryPointWork()
+
+ 
