@@ -2,7 +2,7 @@
   padding: 2rem 1rem;
   display: flex;
   flex-direction: row;
-  transition: all ease-out .5s;
+  transition: all ease .5s;
 }
 
 
@@ -10,16 +10,6 @@
 #board-details.hide {
     height: 3rem;
     padding: 0.5rem 1rem 0;
-    animation: slideDown 1.5s ease;
-}
-
-@keyframes slideDown {
-    from {
-        height: 10rem;
-    }
-    to {
-        height: 3rem;
-    }
 }
 
 #board-details.hide .ghm-assignee-card {
@@ -29,6 +19,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    transition: all ease 0.3s;
 }
 
 #board-details.hide .ghm-assignee-card-title {
@@ -47,25 +38,9 @@
     margin-top: 1px;
 }
 #board-details.hide .ghm-assignee-point-list {
-    overflow: hidden;
-    height: 0;
-    width: 0;
-   animation: slide 1.5s ease; 
-   transition: all ease-out 1s;
+    display: none;
 }
 
-@keyframes slide {
-    from {
-        height: 10rem;
-    }
-    to {
-        height: 0;
-    }
-}
-
-#label-toggle-details {
-    
-}
 #toggle-board-details {
     margin: 0 0.5rem;
 }
