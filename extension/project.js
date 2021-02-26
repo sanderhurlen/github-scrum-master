@@ -27,7 +27,7 @@ async function doStoryPointWork() {
   const sprintInProgressColumn = document.getElementById(`column-${sprintInProgressId}`)
   const sprintReadyForReviewColumn = document.getElementById(`column-${sprintReadyForReviewId}`)
 
-  // All assigness in backlog, inprogress and ready for review
+  // All assignees in backlog, inprogress and ready for review
   let assignees = {}
 
   let boardDetailsElement
@@ -47,7 +47,7 @@ async function doStoryPointWork() {
       }
     }
   }
-  function addAssignessToDetails() {
+  function addAssigneesToDetails() {
     for (const username in assignees) {
       if (Object.hasOwnProperty.call(assignees, username)) {
         const assignee = assignees[username]
@@ -149,9 +149,9 @@ async function doStoryPointWork() {
     for (const card of columnCards) {
       let pointsInCard = getStoryPointsFromElement(card)
       const avatars = card.querySelectorAll('.AvatarStack button')
-      const numAssigness = avatars.length
-      if (numAssigness > 1) {
-        pointsInCard = Math.ceil(pointsInCard / numAssigness)
+      const numAssignees = avatars.length
+      if (numAssignees > 1) {
+        pointsInCard = Math.ceil(pointsInCard / numAssignees)
       }
       for (const avatar of avatars) {
         const assignee = avatar.querySelector('img').alt
@@ -172,7 +172,7 @@ async function doStoryPointWork() {
 
   /**
    * Get all story points labels from the provided element, it can be a document, column, or card
-   * from the board. If it doesnt find any point label, 0 is returned
+   * from the board. If it doesn't find any point label, 0 is returned
    * @param fromElement element to get story points from
    */
   function getStoryPointsFromElement(fromElement) {
@@ -189,7 +189,7 @@ async function doStoryPointWork() {
   const detailsContainer = backlogColumn.querySelector('.js-details-container')
   const counterElement = detailsContainer.querySelector('.js-column-card-count')
   /**
-   * Register click handler on the counter label so we can manualy
+   * Register click handler on the counter label so we can manuals
    * recalculate story points.
    */
   counterElement.addEventListener('click', setStoryPoints)
@@ -210,7 +210,7 @@ async function doStoryPointWork() {
   createBoardDetailsMarkup()
   await setStoryPoints()
   setAllAssigneePoints()
-  addAssignessToDetails()
+  addAssigneesToDetails()
 }
 
 doStoryPointWork()
