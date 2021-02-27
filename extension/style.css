@@ -2,47 +2,45 @@
   padding: 2rem 1rem;
   display: flex;
   flex-direction: row;
-  transition: all ease .5s;
+  transition: all ease 0.5s;
 }
 
-
-
 #board-details.hide {
-    height: 3rem;
-    padding: 0.5rem 1rem 0;
+  height: 3rem;
+  padding: 0.5rem 1rem 0;
 }
 
 #board-details.hide .ghm-assignee-card {
-    height: 100%;
-    width: max-content;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    transition: all ease 0.3s;
+  height: 100%;
+  width: max-content;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: all ease 0.3s;
 }
 
 #board-details.hide .ghm-assignee-card-title {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    padding: 0px;
-    border: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  padding: 0px;
+  border: 0;
 }
 
 #board-details.hide .ghm-assignee-card-title p {
-    padding: 0;
-    margin: 0;
-    margin-left: 0.5rem;
-    margin-top: 1px;
+  padding: 0;
+  margin: 0;
+  margin-left: 0.5rem;
+  margin-top: 1px;
 }
 #board-details.hide .ghm-assignee-point-list {
-    display: none;
+  display: none;
 }
 
 #toggle-board-details {
-    margin: 0 0.5rem;
+  margin: 0 0.5rem;
 }
 
 .dark {
@@ -51,6 +49,7 @@
 }
 
 .ghm-assignee-card {
+  position: relative;
   color: #000;
   min-width: 140px;
   background-color: #fff;
@@ -72,4 +71,19 @@
 
 .ghm-is-bold {
   font-weight: bold;
+}
+
+#board-details.hide:hover {
+  cursor: pointer;
+}
+#board-details.hide > .ghm-assignee-card:hover > .ghm-assignee-point-list {
+  display: block;
+  background: inherit;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 1rem 1rem #00000050;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  top: 1.5rem;
 }
