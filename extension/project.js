@@ -8,12 +8,43 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 /**
+ * Get the project column ids for all columns
+ */
+const projectColumnsContainer = document.querySelector(
+    '.js-project-columns-container'
+);
+
+const boardColumns = projectColumnsContainer.children;
+const columnIds = [];
+
+for (let node of boardColumns) {
+    const dataID = node.dataset.id;
+    if (typeof dataID !== 'undefined') {
+        columnIds.push(dataID);
+    }
+}
+
+chrome.storage.local.set({
+    columns: columnIds,
+});
+
+/**
  * Promise that resolves after X milliseconds
  * @param {int} ms time in milliseconds
  */
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+/**
+ * fetches the values for the given keys from storage
+ * @param {string[]} keys the keys to fetch data from storage from
+ * @returns promise
+ */
+const getFromStorage = (keys) =>
+    new Promise((resolve, reject) =>
+        chrome.storage.sync.get(...keys, (result) => resolve(result))
+    );
 
 /**
  * Performs story point work on the backlog column
@@ -25,13 +56,17 @@ async function doStoryPointWork() {
     const darkMode =
         document.documentElement.dataset['colorMode'] == 'dark' ? true : false;
 
-    // The ID of the column, found when inspecting the HTML element
-    const sprintBacklogId = 12330564;
-    const sprintInProgressId = 12330525;
-    const sprintReadyForReviewId = 12426330;
+    // The ID of the column, fetched from storage
+    // fetched from storage
+    const values = await getFromStorage(['pointColumns']);
+
+    let sprintBacklogId = values.pointColumns[0];
+    let sprintInProgressId = values.pointColumns[1];
+    let sprintReadyForReviewId = values.pointColumns[2];
 
     const projectHeader = document.querySelector('.project-header-controls');
     const columnsContainer = document.querySelector('.project-columns');
+
     const backlogColumn = document.getElementById(`column-${sprintBacklogId}`);
     const sprintInProgressColumn = document.getElementById(
         `column-${sprintInProgressId}`
@@ -76,9 +111,11 @@ async function doStoryPointWork() {
         // add listener for details change
         chrome.storage.onChanged.addListener((changes, namespace) => {
             for (var key in changes) {
-                var storageChange = changes[key];
-                toggleForDetailsElement.checked = storageChange.newValue;
-                boardDetailsElement.classList.toggle('hide');
+                if (key == 'detailsHidden') {
+                    var storageChange = changes[key];
+                    toggleForDetailsElement.checked = storageChange.newValue;
+                    boardDetailsElement.classList.toggle('hide');
+                }
             }
         });
 
@@ -86,8 +123,7 @@ async function doStoryPointWork() {
         toggleForDetailsElement.addEventListener('change', (e) => {
             const value = e.target.checked;
 
-            // update storage
-            chrome.storage.sync.set({ detailsHidden: value });
+            boardDetailsElement.classList.toggle('hide');
         });
     }
 
