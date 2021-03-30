@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    
+    <img src="./icon.png" alt="">
+    <h1>Github Scrum Master
+    </h1>
+    
+    <hr>
+    
+    <h3>Defaults for projects board</h3>
+    <label for="details-toggle">Hide details</label>
+    <input type="checkbox" id="details-toggle" value="false"> 
+    
+    <label for="sprint-column">Sprint backlog (data-id)</label>
+    <select name="sprint-column" id="sprint-column">
+        <option value="">Select data-id of column</option>
+    </select>
+    
+    <label for="inprogress-column">In progress (data-id)</label>
+    <select name="inprogress-column" id="inprogress-column">
+        <option value="">Select data-id of column</option>
+    </select>
+
+    <label for="readyForReview-column">Ready for review (data-id)</label>
+    <select name="readyForReview-column" id="readyForReview-column">
+        <option value="">Select data-id of column</option>
+    </select>
+    
+    <button id='update-settings'>Save settings</button>
+    <h3>Defaults for issues</h3>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
