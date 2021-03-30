@@ -45,6 +45,11 @@ This extension needs a bit of setup. In order to utilize all the features you ne
     - This label is required for calculating and populating story points for details view. The point labels
     - For our project, we used the fibonacci sequence for our labels: 0, 1, 2, 3, 5, 8, 13, 21
 
+3. Set the correct data-id for all columns you want the extension to use.
+    - Use the dropdown when clicking the extension logo for choosing default settings.
+    - The data id for each of the column is automatically provided in the dropdowns.
+    - If you are unsure of which of the data id a column belongs to, this can be found by inspecting the element.
+
 ## How to install
 
 1. Clone repo to your computer
