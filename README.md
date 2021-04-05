@@ -28,8 +28,6 @@ Another functionality we relied heavily upon was to remember to add the issue or
 
 These basic functionalities was our main motivation for developing this chrome extension. Although it is "quick and dirty" extension, it actually solves the problems we faced with our project organization and became a very nice side project for our bachelor thesis.
 
-– written by Sander Hurlen (@sanderhurlen)
-
 ## Prerequisites
 
 This extension needs a bit of setup. In order to utilize all the features you need to:
